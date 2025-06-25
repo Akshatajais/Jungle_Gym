@@ -1,7 +1,6 @@
 import cv2
 from egg_fall import EggManager
 from transparent import *
-from button import *
 
 # Load overlay images with alpha channel
 ducky = cv2.imread("assets/ducky.png", cv2.IMREAD_UNCHANGED)

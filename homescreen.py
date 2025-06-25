@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 from transparent import *
-from button import *
+from gamebuttons import *
 import subprocess 
 
 logo= cv2.imread('Assets/logo.png',cv2.IMREAD_UNCHANGED)
@@ -25,7 +25,7 @@ def mouse_callback(event, x, y,flags, param):
         if button1.is_clicked(x, y):
             subprocess.Popen(["python3", "game1.py"])
         elif button2.is_clicked(x, y):
-            subprocess.Popen(["python3", "game1.py"])
+            subprocess.Popen(["python3", "game2.py"])
 
 cv2.namedWindow("Welcome to the game ducky")  
 cv2.setMouseCallback("Welcome to the game ducky", mouse_callback)
