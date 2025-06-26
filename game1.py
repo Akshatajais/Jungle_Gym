@@ -32,6 +32,8 @@ while True:
     success, frame = cap.read()
     if not success:
         break
+    frame=cv2.resize(frame,(1920,1080))
+
     frame = cv2.flip(frame, 1)  # 1 means horizontal flip
 
     cv2.putText(frame, "Pinch your thumb and index finger to drag the egg", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 120, 255), 2)
