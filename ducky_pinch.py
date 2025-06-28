@@ -5,6 +5,7 @@ from transparent import *
 
 # Load overlay images with alpha channel
 ducky = cv2.imread("assets/ducky.png", cv2.IMREAD_UNCHANGED)
+ducky=cv2.flip(ducky,1)
 path = cv2.imread("assets/path.png", cv2.IMREAD_UNCHANGED)
 egg_img = cv2.imread("assets/egg.png", cv2.IMREAD_UNCHANGED)
 basket_img = cv2.imread("assets/basket.png", cv2.IMREAD_UNCHANGED)
