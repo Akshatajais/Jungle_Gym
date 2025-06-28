@@ -25,28 +25,30 @@ if not success:
 frame_h, frame_w = frame.shape[:2]
 
 # Resize overlays relative to frame
-ducky_w = int(0.12 * frame_w)
-ducky_h = int(0.12 * frame_h)
-ducky = cv2.resize(ducky, (ducky_w, ducky_h))
-
 path_h = int(0.35 * frame_h)
 path = cv2.resize(path, (frame_w, path_h))
 
-egg_size = int(0.09 * frame_h)
+# Estimate the visible height of path's colored ground section
+visible_ground_y = frame_h - int(path_h * 0.22)
+
+ducky_h = int(path_h * 0.9)
+ducky_w = int(ducky_h * ducky.shape[1] / ducky.shape[0])
+ducky = cv2.resize(ducky, (ducky_w, ducky_h))
+
+egg_size = int(0.18 * frame_h)
 egg_img = cv2.resize(egg_img, (egg_size, egg_size))
 
-basket_w = int(0.17 * frame_w)
-basket_h = int(0.17 * frame_h)
+basket_h = int(path_h * 0.9)
+basket_w = int(basket_h * basket_img.shape[1] / basket_img.shape[0])
 basket_img = cv2.resize(basket_img, (basket_w, basket_h))
 
-# Ducky position (bottom left above path)
+# Position overlays so they sit exactly on the colored part of path
 ducky_x = int(0.02 * frame_w)
-ducky_y = frame_h - path_h - ducky_h
+ducky_y = visible_ground_y - ducky_h
 
-# Basket position (bottom right above path)
 basket_x = frame_w - basket_w - int(0.02 * frame_w)
-basket_y = frame_h - path_h - basket_h
-basket_zone = (basket_x, basket_y, basket_w, basket_h)
+basket_y = visible_ground_y - basket_h
+basket_zone = (basket_x - 40, basket_y - 40, basket_w + 80, basket_h + 80)  # Larger basket zone
 
 # Egg state
 egg = {
@@ -123,13 +125,13 @@ while True:
     text_x = max(int(0.05 * frame_w), 10)
     text_y = max(int(0.06 * frame_h), 30)
     cv2.putText(frame, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 120, 255), 2)
-    cv2.putText(frame, f"Score: {score}/{max_score}", (text_x, text_y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 255), 2)
+    cv2.putText(frame, f"Score: {score}/{max_score}", (text_x, text_y + 40), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 0, 255), 3)
 
     # Draw overlays
-    frame = overlay_transparent(frame, ducky, ducky_x, ducky_y)
     if score < max_score:
         frame = overlay_transparent(frame, egg_img, egg['x'], egg['y'])
     frame = overlay_transparent(frame, path, 0, frame_h - path_h)
+    frame = overlay_transparent(frame, ducky, ducky_x, ducky_y)
     frame = overlay_transparent(frame, basket_img, basket_x, basket_y)
 
     if score >= max_score:
