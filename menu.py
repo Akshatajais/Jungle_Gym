@@ -20,7 +20,7 @@ ICON_SCALE = (60, 60)
 
 # Exercise → character icon
 exercise_icons = {
-    "duck_pinch": ducky,
+    "ducky_pinch": ducky,
     "ducky_fist": ducky,
     "chad_arm_raise": chad,
     "chad_punching": chad,
@@ -52,16 +52,16 @@ def launch_exercise(name):
 
 # Conditions ➝ exercises
 condition_exercises = {
-    "Arthritis (Joint Rehab)": ["duck_pinch", "ducky_fist", "chad_arm_raise", "fox_knee_raise", "fox_ankle"],
+    "Arthritis (Joint Rehab)": ["ducky_pinch", "ducky_fist", "chad_arm_raise", "fox_knee_raise", "fox_ankle"],
     "Post Knee Surgery (ACL/Meniscus)": ["fox_knee_raise", "fox_walking", "fox_ankle", "chad_arm_raise"],
     "Balance & Fall Prevention Rehab": ["fox_walking", "fox_knee_raise", "fox_ankle", "chad_arm_raise", "duck_pinch"],
     "Ankle Sprain Rehab": ["fox_ankle", "fox_walking", "fox_knee_raise", "chad_arm_raise"],
-    "Post-Stroke Recovery": ["duck_pinch", "ducky_fist", "chad_arm_raise", "chad_punching", "fox_walking", "fox_knee_raise", "fox_ankle"],
-    "Parkinson’s Disease": ["duck_pinch", "ducky_fist", "chad_arm_raise", "fox_walking", "fox_knee_raise", "fox_ankle"],
+    "Post-Stroke Recovery": ["ducky_pinch", "ducky_fist", "chad_arm_raise", "chad_punching", "fox_walking", "fox_knee_raise", "fox_ankle"],
+    "Parkinsons Disease": ["ducky_pinch", "ducky_fist", "chad_arm_raise", "fox_walking", "fox_knee_raise", "fox_ankle"],
     "Frozen Shoulder": ["chad_arm_raise", "chad_punching", "duck_pinch"],
     "ACL Injury": ["fox_knee_raise", "fox_walking", "fox_ankle", "chad_arm_raise"],
-    "Carpal Tunnel": ["duck_pinch", "ducky_fist", "chad_arm_raise"],
-    "Cerebral Palsy": ["duck_pinch", "ducky_fist", "chad_punching", "fox_knee_raise", "fox_walking", "fox_ankle"]
+    "Carpal Tunnel": ["ducky_pinch", "ducky_fist", "chad_arm_raise"],
+    "Cerebral Palsy": ["ducky_pinch", "ducky_fist", "chad_punching", "fox_knee_raise", "fox_walking", "fox_ankle"]
 }
 
 # Show selected condition's exercises
